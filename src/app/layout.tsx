@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollingProvider } from "@/components/animations/smooth-scrolling-provider";
+import { PageTransition } from "@/components/animations/page-transition";
+import { PerformanceMonitor } from "@/components/animations/performance-optimizer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <SmoothScrollingProvider>
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
+          <PerformanceMonitor />
         </SmoothScrollingProvider>
       </body>
     </html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>LotGo - Teste do Mapa 3D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            color: white;
+        }
+        
+        .content-box {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0 0 1rem 0;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin: 0 0 2rem 0;
+            opacity: 0.9;
+        }
+        
+        .status {
+            padding: 1rem;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            border-radius: 10px;
+            color: #22c55e;
+            font-weight: 600;
+        }
+        
+        .loading {
+            background: rgba(251, 191, 36, 0.2);
+            border-color: rgba(251, 191, 36, 0.4);
+            color: #fbbf24;
+        }
+        
+        .error {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div id="map"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <div class="content-box">
+                <h1>🗺️ LotGo</h1>
+                <p>O jeito inteligente de comprar e vender terrenos com Mapa 3D!</p>
+                <div id="status" class="status loading">
+                    🔄 Inicializando Mapa 3D Mapbox GL JS v3...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const MAPBOX_TOKEN = 'pk.eyJ1IjoidWNpYW5vZmVycmFyZXppIiwiYSI6ImNtOXhqbGVicjFhcjAyaXBzOXVudnppaTIifQ.U2AbXK91zYevb6GG0D7KCA';
+        const status = document.getElementById('status');
+        
+        function updateStatus(message, type = 'loading') {
+            status.textContent = message;
+            status.className = `status ${type}`;
+        }
+        
+        try {
+            mapboxgl.accessToken = MAPBOX_TOKEN;
+            updateStatus('🔄 Configurando Mapbox...', 'loading');
+            
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/standard',
+                center: [-47.9195, -19.9167], // Uberaba, MG
+                zoom: 4,
+                pitch: 60, // 3D tilt
+                bearing: -20, // 3D rotation
+                projection: 'globe', // Globe view
+                antialias: true
+            });
+
+            map.on('load', function() {
+                updateStatus('✅ Mapa 3D Carregado com Sucesso!', '');
+                
+                // Add terrain for 3D effect
+                map.addSource('mapbox-dem', {
+                    type: 'raster-dem',
+                    url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+                    tileSize: 512,
+                    maxzoom: 14
+                });
+                
+                map.setTerrain({ 
+                    source: 'mapbox-dem', 
+                    exaggeration: 2.0 
+                });
+                
+                // Add fog for atmospheric effect
+                map.setFog({
+                    color: 'rgb(255, 239, 213)',
+                    'high-color': 'rgb(245, 159, 66)',
+                    'horizon-blend': 0.05,
+                    'space-color': 'rgb(11, 20, 40)',
+                    'star-intensity': 0.8
+                });
+                
+                // Add smooth rotation
+                let rotation = 0;
+                function rotateMap() {
+                    rotation += 0.1;
+                    map.rotateTo(rotation, { duration: 0 });
+                    requestAnimationFrame(rotateMap);
+                }
+                rotateMap();
+                
+                updateStatus('🌍 Mapa 3D Ativo - Globe, Terrain, Fog & Rotation!', '');
+            });
+
+            map.on('error', function(e) {
+                console.error('Map error:', e);
+                updateStatus('❌ Erro ao carregar mapa: ' + e.error.message, 'error');
+            });
+
+        } catch (error) {
+            console.error('Mapbox error:', error);
+            updateStatus('❌ Erro ao inicializar Mapbox: ' + error.message, 'error');
+        }
+    </script>
+</body>
+</html>

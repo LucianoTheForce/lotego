@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback, useRef, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import dynamic from "next/dynamic"
 import Link from "next/link"
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { PropertyCardSkeleton, LoadingSpinner } from "@/components/ui/loading"
 import { Search, Filter, MapPin, Home, DollarSign, ChevronLeft, ChevronRight } from "lucide-react"
 
 const Map = dynamic(() => import("@/components/map/map").then(mod => ({ default: mod.Map })), {
@@ -45,7 +46,7 @@ interface SearchResponse {
   }
 }
 
-export default function SearchPage() {
+function SearchPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   
@@ -64,8 +65,7 @@ export default function SearchPage() {
   const [pagination, setPagination] = useState<SearchResponse['pagination'] | null>(null)
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || 1)
-  const [selectedProperty, setSelectedProperty] = useState<Property | null>(null)
-  const mapRef = useRef<any>(null)
+  const mapRef = useRef<{ flyTo: (lng: number, lat: number, zoom?: number) => void; addMarkers: (properties: Property[]) => void; geocodeAndFlyTo: (location: string) => Promise<void> } | null>(null)
 
   const searchProperties = useCallback(async (page: number = 1) => {
     setLoading(true)
@@ -86,6 +86,14 @@ export default function SearchPage() {
       setProperties(data.properties)
       setPagination(data.pagination)
       setCurrentPage(page)
+
+      // Se temos propriedades, centralizar mapa na primeira propriedade
+      if (data.properties.length > 0 && data.properties[0].coordinates && mapRef.current) {
+        setTimeout(() => {
+          const firstProperty = data.properties[0]
+          mapRef.current?.flyTo(firstProperty.coordinates.lng, firstProperty.coordinates.lat, 12)
+        }, 800)
+      }
 
       // Atualizar URL sem recarregar a página
       const newParams = new URLSearchParams(searchParams)
@@ -115,13 +123,22 @@ export default function SearchPage() {
     searchProperties(currentPage)
   }, [currentPage, searchProperties])
 
+  // Centralizar mapa quando há termo de busca inicial
+  useEffect(() => {
+    const initialSearch = searchParams.get('search')
+    if (initialSearch && mapRef.current) {
+      setTimeout(() => {
+        mapRef.current?.geocodeAndFlyTo(initialSearch)
+      }, 1000) // Delay maior para carregamento inicial
+    }
+  }, [searchParams])
+
 
   const handlePageChange = (page: number) => {
     searchProperties(page)
   }
 
   const handlePropertyClick = (property: Property) => {
-    setSelectedProperty(property)
     if (mapRef.current && property.coordinates) {
       mapRef.current.flyTo(property.coordinates.lng, property.coordinates.lat, 16)
     }
@@ -137,7 +154,9 @@ export default function SearchPage() {
     
     // Se há um termo de busca, vamos tentar centralizar o mapa na localização
     if (searchTerm && mapRef.current) {
-      mapRef.current.geocodeAndFlyTo(searchTerm)
+      setTimeout(() => {
+        mapRef.current?.geocodeAndFlyTo(searchTerm)
+      }, 500) // Delay para garantir que o mapa foi inicializado
     }
   }
 
@@ -171,7 +190,7 @@ export default function SearchPage() {
                 className="flex-1"
               />
               <Button onClick={handleSearchSubmit} disabled={loading}>
-                <Search className="w-4 h-4 mr-2" />
+                {loading ? <LoadingSpinner size="sm" className="mr-2" /> : <Search className="w-4 h-4 mr-2" />}
                 {loading ? 'Buscando...' : 'Buscar'}
               </Button>
               <Button
@@ -265,9 +284,7 @@ export default function SearchPage() {
             {loading ? (
               <div className="space-y-4">
                 {[...Array(5)].map((_, i) => (
-                  <div key={i} className="animate-pulse">
-                    <div className="h-32 bg-gray-200 rounded mb-4"></div>
-                  </div>
+                  <PropertyCardSkeleton key={i} />
                 ))}
               </div>
             ) : (
@@ -360,5 +377,13 @@ export default function SearchPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div>Carregando...</div>}>
+      <SearchPageContent />
+    </Suspense>
   )
 }

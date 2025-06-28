@@ -3,20 +3,26 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MapPin, TrendingUp, Shield, ArrowRight, Sparkles, Zap, Globe } from "lucide-react"
-import { HomeMap } from "@/components/map/home-map"
+import { HeroMap } from "@/components/map/hero-map"
 import { SearchForm } from "@/components/search/search-form"
 import { 
   AnimatedElement, 
-  ParallaxElement, 
   MagneticElement, 
   StaggeredAnimation, 
   TextReveal, 
   FloatingElement 
 } from "@/components/animations/gsap-animations"
+import { 
+  ScrollReveal, 
+  ParallaxScroll, 
+  ScrollProgress, 
+  CounterAnimation 
+} from "@/components/animations/scroll-effects"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <ScrollProgress />
       {/* Animated Background Elements */}
       <div className="fixed inset-0 -z-10">
         <FloatingElement amplitude={15} duration={8} className="absolute top-10 left-10 opacity-10">
@@ -82,25 +88,35 @@ export default function HomePage() {
         </header>
       </AnimatedElement>
 
-      {/* Hero Section */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+      {/* Hero Section with 3D Map */}
+      <section className="relative h-screen overflow-hidden">
+        {/* Fallback Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 z-0" />
+        
+        {/* 3D Map Background */}
+        <HeroMap />
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/20 z-10" />
+        
+        {/* Hero Content */}
+        <div className="relative z-20 h-full flex items-center">
+          <div className="container-custom">
+            <div className="max-w-2xl">
               <AnimatedElement animation="fadeUp" delay={0.4}>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-50 to-purple-50 border border-primary-200/50 text-primary-700 text-sm font-medium">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8">
                   <Sparkles className="w-4 h-4" />
                   Plataforma #1 para terrenos no Brasil
                 </div>
               </AnimatedElement>
 
-              <div className="space-y-6">
-                <TextReveal className="text-display-2xl font-black text-neutral-900 leading-tight">
+              <div className="space-y-6 mb-8">
+                <TextReveal className="text-display-2xl lg:text-display-3xl font-black text-white leading-tight">
                   O jeito inteligente de comprar e vender terrenos
                 </TextReveal>
                 
                 <AnimatedElement animation="fadeUp" delay={0.8}>
-                  <p className="text-xl text-neutral-600 leading-relaxed max-w-xl">
+                  <p className="text-xl text-white/90 leading-relaxed max-w-xl">
                     Encontre o terreno ideal ou venda sua propriedade com tecnologia, 
                     transparência e segurança. A primeira plataforma 100% focada em terrenos.
                   </p>
@@ -108,57 +124,58 @@ export default function HomePage() {
               </div>
 
               <AnimatedElement animation="fadeUp" delay={1}>
-                <div className="max-w-md">
+                <div className="max-w-md mb-8">
                   <SearchForm size="large" />
                 </div>
               </AnimatedElement>
 
-              <StaggeredAnimation delay={1.2} stagger={0.1} className="flex items-center gap-8 text-sm text-neutral-600">
+              <StaggeredAnimation delay={1.2} stagger={0.1} className="flex flex-wrap items-center gap-6 text-sm text-white/80">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse-soft" />
+                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse-soft" />
                   <span className="font-medium">15 terrenos em Uberaba</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse-soft" />
+                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse-soft" />
                   <span className="font-medium">+500 vendas/mês</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse-soft" />
+                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse-soft" />
                   <span className="font-medium">100% seguro</span>
                 </div>
               </StaggeredAnimation>
             </div>
-
-            <AnimatedElement animation="scale" delay={0.6} className="relative">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-purple-600 rounded-3xl blur-3xl opacity-20 scale-105" />
-                <div className="relative bg-white rounded-3xl shadow-2xl border border-neutral-200/50 overflow-hidden">
-                  <HomeMap />
-                </div>
-              </div>
-            </AnimatedElement>
           </div>
         </div>
+
+        {/* Scroll indicator */}
+        <AnimatedElement animation="fadeIn" delay={2} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex flex-col items-center text-white/60">
+            <span className="text-sm font-medium mb-2">Explore mais</span>
+            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce" />
+            </div>
+          </div>
+        </AnimatedElement>
       </section>
 
       {/* Features Section */}
       <section className="py-24 bg-gradient-to-b from-neutral-50 to-white relative">
-        <ParallaxElement speed={0.3} className="absolute inset-0 opacity-5">
+        <ParallaxScroll speed={0.3} className="absolute inset-0 opacity-5">
           <div className="w-full h-full bg-[radial-gradient(circle_at_center,theme(colors.primary.200)_1px,transparent_1px)] bg-[length:50px_50px]" />
-        </ParallaxElement>
+        </ParallaxScroll>
         
         <div className="container-custom relative">
           <div className="text-center mb-16">
-            <AnimatedElement animation="fadeUp">
+            <ScrollReveal direction="up">
               <h2 className="text-display-lg font-bold text-neutral-900 mb-4">
                 Por que escolher a LotGo?
               </h2>
-            </AnimatedElement>
-            <AnimatedElement animation="fadeUp" delay={0.2}>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.2}>
               <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
                 Revolucionamos o mercado de terrenos com tecnologia de ponta e experiência premium
               </p>
-            </AnimatedElement>
+            </ScrollReveal>
           </div>
 
           <StaggeredAnimation stagger={0.2} className="grid md:grid-cols-3 gap-8">
@@ -221,21 +238,23 @@ export default function HomePage() {
             </AnimatedElement>
           </div>
 
-          <StaggeredAnimation stagger={0.1} className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: "15+", label: "Terrenos em Uberaba", suffix: "" },
-              { number: "5.000+", label: "Propriedades Ativas", suffix: "" },
-              { number: "500+", label: "Vendas por Mês", suffix: "" },
-              { number: "99%", label: "Satisfação", suffix: "" }
+              { number: 15, label: "Terrenos em Uberaba", suffix: "+" },
+              { number: 5000, label: "Propriedades Ativas", suffix: "+" },
+              { number: 500, label: "Vendas por Mês", suffix: "+" },
+              { number: 99, label: "Satisfação", suffix: "%" }
             ].map((stat, index) => (
-              <div key={index} className="space-y-2">
-                <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">
-                  {stat.number}
+              <ScrollReveal key={index} delay={index * 0.1} direction="up">
+                <div className="space-y-2">
+                  <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent">
+                    <CounterAnimation from={0} to={stat.number} suffix={stat.suffix} duration={2} />
+                  </div>
+                  <div className="text-neutral-300 font-medium">{stat.label}</div>
                 </div>
-                <div className="text-neutral-300 font-medium">{stat.label}</div>
-              </div>
+              </ScrollReveal>
             ))}
-          </StaggeredAnimation>
+          </div>
         </div>
       </section>
 
