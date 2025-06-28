@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScrollingProvider } from "@/components/animations/smooth-scrolling-provider";
 import { PageTransition } from "@/components/animations/page-transition";
 import { PerformanceMonitor } from "@/components/animations/performance-optimizer";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SmoothScrollingProvider>
-          <PageTransition>
-            {children}
-          </PageTransition>
-          <PerformanceMonitor />
-        </SmoothScrollingProvider>
+        <AuthProvider>
+          <SmoothScrollingProvider>
+            <PageTransition>
+              {children}
+            </PageTransition>
+            <PerformanceMonitor />
+          </SmoothScrollingProvider>
+        </AuthProvider>
       </body>
     </html>
   );

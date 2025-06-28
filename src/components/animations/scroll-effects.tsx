@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useIsClient } from '@/hooks/useIsClient'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -25,10 +26,11 @@ export function ScrollReveal({
   duration = 1,
   className = ''
 }: ScrollRevealProps) {
+  const isClient = useIsClient()
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!elementRef.current) return
+    if (!isClient || !elementRef.current) return
 
     const element = elementRef.current
 
@@ -72,10 +74,18 @@ export function ScrollReveal({
         }
       })
     }
-  }, [direction, distance, delay, duration])
+  }, [isClient, direction, distance, delay, duration])
+
+  if (!isClient) {
+    return (
+      <div className={className} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={elementRef} className={`will-change-transform ${className}`}>
+    <div ref={elementRef} className={`will-change-transform ${className}`} suppressHydrationWarning>
       {children}
     </div>
   )

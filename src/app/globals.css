@@ -3,21 +3,37 @@
 
 /* ========================================
    MODERN DESIGN SYSTEM - LOTGO
-   FWA-WORTHY STYLING
+   FWA-WORTHY STYLING + AIRBNB MOBILE-FIRST
 ======================================== */
 
+/* Hide scrollbar for Webkit browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari and Opera */
+}
+
+/* Smooth scrolling for mobile */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 :root {
-  /* === APPLE-INSPIRED PALETTE === */
-  --primary-50: #f0f9ff;
-  --primary-100: #e0f2fe;
-  --primary-200: #bae6fd;
-  --primary-300: #7dd3fc;
-  --primary-400: #3b82f6;
-  --primary-500: #2563eb;
-  --primary-600: #1d4ed8;
-  --primary-700: #1e40af;
-  --primary-800: #1e3a8a;
-  --primary-900: #1e3a8a;
+  /* === MODERN ELEGANT PALETTE === */
+  --primary-50: #f8fafc;
+  --primary-100: #f1f5f9;
+  --primary-200: #e2e8f0;
+  --primary-300: #cbd5e1;
+  --primary-400: #64748b;
+  --primary-500: #475569;
+  --primary-600: #334155;
+  --primary-700: #1e293b;
+  --primary-800: #0f172a;
+  --primary-900: #020617;
   
   /* === SOPHISTICATED NEUTRALS === */
   --neutral-50: #fafbfc;
@@ -31,6 +47,16 @@
   --neutral-800: #1f2937;
   --neutral-900: #111827;
   --neutral-950: #030712;
+  
+  /* === ACCENT COLORS === */
+  --accent-emerald: #10b981;
+  --accent-emerald-light: #34d399;
+  --accent-violet: #8b5cf6;
+  --accent-violet-light: #a78bfa;
+  --accent-amber: #f59e0b;
+  --accent-amber-light: #fbbf24;
+  --accent-rose: #f43f5e;
+  --accent-rose-light: #fb7185;
   
   /* === SEMANTIC COLORS === */
   --success: #059669;
@@ -54,18 +80,24 @@
   /* === BORDER & SHADOW === */
   --border-primary: var(--neutral-200);
   --border-secondary: var(--neutral-100);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --border-accent: rgba(139, 92, 246, 0.2);
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.18);
+  --shadow-colored: 0 20px 25px -5px rgba(139, 92, 246, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+  --shadow-inner: inset 0 2px 4px 0 rgba(15, 23, 42, 0.06);
   
   /* === GRADIENTS === */
-  --gradient-primary: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-700) 100%);
-  --gradient-hero: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  --gradient-card: linear-gradient(145deg, #ffffff 0%, var(--neutral-50) 100%);
-  --gradient-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+  --gradient-hero: linear-gradient(135deg, var(--primary-700) 0%, var(--accent-violet) 40%, var(--accent-emerald) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-emerald) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--accent-amber) 0%, var(--accent-rose) 100%);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, rgba(248, 250, 252, 0.8) 100%);
+  --gradient-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 100%);
+  --gradient-surface: linear-gradient(145deg, #ffffff 0%, var(--neutral-50) 100%);
   
   /* === ANIMATION VARIABLES === */
   --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
@@ -306,16 +338,60 @@ html.lenis {
   border: 1px solid var(--border-primary);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
-  transition: all 0.2s ease;
+  transition: all 0.3s var(--ease-out-expo);
   position: relative;
   overflow: hidden;
   will-change: transform;
+  backdrop-filter: blur(10px);
 }
 
 .card-modern:hover {
-  transform: translate3d(0, -4px, 0);
-  box-shadow: var(--shadow-2xl);
-  border-color: var(--primary-200);
+  transform: translate3d(0, -8px, 0);
+  box-shadow: var(--shadow-colored);
+  border-color: var(--border-accent);
+}
+
+.card-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-modern:hover::before {
+  opacity: 1;
+}
+
+/* === ENHANCED CARD VARIANTS === */
+.card-featured {
+  background: var(--gradient-surface);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.card-featured::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--gradient-accent);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.card-glass {
+  background: var(--gradient-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* === SCROLL INDICATORS === */

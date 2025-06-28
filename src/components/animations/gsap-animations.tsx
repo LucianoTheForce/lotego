@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useInView } from 'react-intersection-observer'
+import { useIsClient } from '@/hooks/useIsClient'
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger)
@@ -26,6 +27,7 @@ export function AnimatedElement({
   className = '',
   once = true
 }: AnimatedElementProps) {
+  const isClient = useIsClient()
   const elementRef = useRef<HTMLDivElement>(null)
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.1,
@@ -39,7 +41,7 @@ export function AnimatedElement({
   }
 
   useEffect(() => {
-    if (!elementRef.current || !inView) return
+    if (!isClient || !elementRef.current || !inView) return
 
     const element = elementRef.current
 
@@ -71,10 +73,19 @@ export function AnimatedElement({
     return () => {
       tl.kill()
     }
-  }, [inView, animation, delay, duration])
+  }, [isClient, inView, animation, delay, duration])
+
+  // Render without animations on server to prevent hydration mismatch
+  if (!isClient) {
+    return (
+      <div className={className} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={setRefs} className={`will-change-transform ${className}`}>
+    <div ref={setRefs} className={`will-change-transform ${className}`} suppressHydrationWarning>
       {children}
     </div>
   )
@@ -87,10 +98,11 @@ interface ParallaxElementProps {
 }
 
 export function ParallaxElement({ children, speed = 0.5, className = '' }: ParallaxElementProps) {
+  const isClient = useIsClient()
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!elementRef.current) return
+    if (!isClient || !elementRef.current) return
 
     const element = elementRef.current
 
@@ -111,10 +123,18 @@ export function ParallaxElement({ children, speed = 0.5, className = '' }: Paral
     return () => {
       tl.kill()
     }
-  }, [speed])
+  }, [isClient, speed])
+
+  if (!isClient) {
+    return (
+      <div className={className} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={elementRef} className={`will-change-transform ${className}`}>
+    <div ref={elementRef} className={`will-change-transform ${className}`} suppressHydrationWarning>
       {children}
     </div>
   )
@@ -127,10 +147,11 @@ interface MagneticElementProps {
 }
 
 export function MagneticElement({ children, strength = 0.3, className = '' }: MagneticElementProps) {
+  const isClient = useIsClient()
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!elementRef.current) return
+    if (!isClient || !elementRef.current) return
 
     const element = elementRef.current
 
@@ -166,10 +187,18 @@ export function MagneticElement({ children, strength = 0.3, className = '' }: Ma
       element.removeEventListener('mousemove', handleMouseMove)
       element.removeEventListener('mouseleave', handleMouseLeave)
     }
-  }, [strength])
+  }, [isClient, strength])
+
+  if (!isClient) {
+    return (
+      <div className={`cursor-pointer ${className}`} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={elementRef} className={`cursor-pointer will-change-transform ${className}`}>
+    <div ref={elementRef} className={`cursor-pointer will-change-transform ${className}`} suppressHydrationWarning>
       {children}
     </div>
   )
@@ -190,6 +219,7 @@ export function StaggeredAnimation({
   animation = 'fadeUp',
   className = ''
 }: StaggeredAnimationProps) {
+  const isClient = useIsClient()
   const containerRef = useRef<HTMLDivElement>(null)
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.1,
@@ -202,7 +232,7 @@ export function StaggeredAnimation({
   }
 
   useEffect(() => {
-    if (!containerRef.current || !inView) return
+    if (!isClient || !containerRef.current || !inView) return
 
     const elements = containerRef.current.children
 
@@ -223,10 +253,18 @@ export function StaggeredAnimation({
       stagger,
       ease: 'power2.out',
     })
-  }, [inView, delay, stagger, animation])
+  }, [isClient, inView, delay, stagger, animation])
+
+  if (!isClient) {
+    return (
+      <div className={className} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={setRefs} className={className}>
+    <div ref={setRefs} className={className} suppressHydrationWarning>
       {children}
     </div>
   )
@@ -239,6 +277,7 @@ interface TextRevealProps {
 }
 
 export function TextReveal({ children, delay = 0, className = '' }: TextRevealProps) {
+  const isClient = useIsClient()
   const textRef = useRef<HTMLDivElement>(null)
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.1,
@@ -251,7 +290,7 @@ export function TextReveal({ children, delay = 0, className = '' }: TextRevealPr
   }
 
   useEffect(() => {
-    if (!textRef.current || !inView) return
+    if (!isClient || !textRef.current || !inView) return
 
     const text = textRef.current
     const words = children.split(' ')
@@ -278,10 +317,18 @@ export function TextReveal({ children, delay = 0, className = '' }: TextRevealPr
       stagger: 0.05,
       ease: 'power3.out',
     })
-  }, [inView, children, delay])
+  }, [isClient, inView, children, delay])
+
+  if (!isClient) {
+    return (
+      <div className={className} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={setRefs} className={className}>
+    <div ref={setRefs} className={className} suppressHydrationWarning>
       {children}
     </div>
   )
@@ -302,10 +349,11 @@ export function FloatingElement({
   delay = 0,
   className = ''
 }: FloatingElementProps) {
+  const isClient = useIsClient()
   const elementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!elementRef.current) return
+    if (!isClient || !elementRef.current) return
 
     const element = elementRef.current
 
@@ -326,10 +374,18 @@ export function FloatingElement({
       yoyo: true,
       ease: 'power1.inOut',
     })
-  }, [amplitude, duration, delay])
+  }, [isClient, amplitude, duration, delay])
+
+  if (!isClient) {
+    return (
+      <div className={className} suppressHydrationWarning>
+        {children}
+      </div>
+    )
+  }
 
   return (
-    <div ref={elementRef} className={`will-change-transform ${className}`}>
+    <div ref={elementRef} className={`will-change-transform ${className}`} suppressHydrationWarning>
       {children}
     </div>
   )

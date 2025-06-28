@@ -16,7 +16,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -23.5041, lng: -46.8509 },
-    images: ["/images/terreno1.jpg"],
+    images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop"],
     features: ["Água", "Luz", "Esgoto", "Portaria 24h"]
   },
   {
@@ -33,7 +33,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -15.8697, lng: -47.8292 },
-    images: ["/images/terreno2.jpg"],
+    images: ["https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=400&h=300&fit=crop"],
     features: ["Água", "Luz", "Área verde próxima"]
   },
   {
@@ -50,7 +50,7 @@ const mockProperties = [
     type: "farm",
     status: "active",
     coordinates: { lat: -23.1170, lng: -46.5503 },
-    images: ["/images/fazenda1.jpg"],
+    images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"],
     features: ["Nascente", "Mata preservada", "Acesso por estrada de terra"]
   },
   {
@@ -67,7 +67,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -15.8031, lng: -48.0519 },
-    images: ["/images/comercial1.jpg"],
+    images: ["https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1460472178825-e5240bae0045?w=400&h=300&fit=crop"],
     features: ["Água", "Luz", "Esgoto", "Próximo ao metrô"]
   },
   {
@@ -84,7 +84,7 @@ const mockProperties = [
     type: "land",
     status: "active",
     coordinates: { lat: -15.6533, lng: -47.7958 },
-    images: ["/images/chacara1.jpg"],
+    images: ["https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop"],
     features: ["Casa sede", "Poço artesiano", "Área de lazer"]
   },
   // Lotes em Uberaba - MG
@@ -102,7 +102,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7482, lng: -47.9317 },
-    images: ["/images/uberaba1.jpg"],
+    images: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop"],
     features: ["Água", "Luz", "Esgoto", "Meio-fio", "Calçamento"]
   },
   {
@@ -119,7 +119,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7456, lng: -47.9289 },
-    images: ["/images/uberaba2.jpg"],
+    images: ["https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop"],
     features: ["Água", "Luz", "Esgoto", "Alto movimento", "Esquina", "Zoneamento comercial"]
   },
   {
@@ -136,7 +136,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7234, lng: -47.9123 },
-    images: ["/images/uberaba3.jpg"],
+    images: ["https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=400&h=300&fit=crop"],
     features: ["Portaria 24h", "Área verde", "Playground", "Quadra", "Piscina", "Salão festas"]
   },
   {
@@ -153,7 +153,7 @@ const mockProperties = [
     type: "farm",
     status: "active",
     coordinates: { lat: -19.8123, lng: -47.8567 },
-    images: ["/images/uberaba4.jpg"],
+    images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"],
     features: ["Nascente", "Energia elétrica", "Estrada de acesso", "Solo fértil", "Mata preservada"]
   },
   {
@@ -170,7 +170,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7789, lng: -47.8945 },
-    images: ["/images/uberaba5.jpg"],
+    images: ["https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1460472178825-e5240bae0045?w=400&h=300&fit=crop"],
     features: ["Zoneamento industrial", "Gás natural", "Água", "Esgoto", "Acesso rodovia"]
   },
   {
@@ -187,7 +187,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7345, lng: -47.9456 },
-    images: ["/images/uberaba6.jpg"],
+    images: ["https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&h=300&fit=crop"],
     features: ["Gabarito 8 andares", "Esquina", "Próximo shopping", "Transporte público"]
   },
   {
@@ -204,7 +204,7 @@ const mockProperties = [
     type: "land",
     status: "active",
     coordinates: { lat: -19.7012, lng: -47.9012 },
-    images: ["/images/uberaba7.jpg"],
+    images: ["https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop"],
     features: ["Casa sede", "Piscina", "Churrasqueira", "Pomar", "Poço artesiano", "Garagem 4 carros"]
   },
   {
@@ -221,7 +221,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7567, lng: -47.9234 },
-    images: ["/images/uberaba8.jpg"],
+    images: ["https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop"],
     features: ["Esquina movimentada", "Próximo hospital", "Transporte público", "Comércio ativo"]
   },
   {
@@ -238,7 +238,7 @@ const mockProperties = [
     type: "lot",
     status: "active",
     coordinates: { lat: -19.7123, lng: -47.8891 },
-    images: ["/images/uberaba9.jpg"],
+    images: ["https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1571055107559-3e67626fa8be?w=400&h=300&fit=crop"],
     features: ["Bairro nobre", "Segurança", "Paisagismo", "Clube próximo", "Escola particular"]
   },
   {
@@ -255,7 +255,7 @@ const mockProperties = [
     type: "land",
     status: "active",
     coordinates: { lat: -19.7678, lng: -47.8734 },
-    images: ["/images/uberaba10.jpg"],
+    images: ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop", "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop"],
     features: ["Área para loteamento", "Projeto aprovado", "Infraestrutura próxima", "Potencial valorização"]
   }
 ]

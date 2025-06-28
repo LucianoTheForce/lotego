@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { MapPin, TrendingUp, Shield, ArrowRight, Sparkles, Zap, Globe } from "lucide-react"
 import { HeroMap } from "@/components/map/hero-map"
 import { SearchForm } from "@/components/search/search-form"
+import { MobileHeader } from "@/components/ui/mobile-header"
+import { UserMenu } from "@/components/ui/user-menu-simple"
 import { 
   AnimatedElement, 
   MagneticElement, 
@@ -36,8 +38,17 @@ export default function HomePage() {
         </FloatingElement>
       </div>
 
-      {/* Header */}
-      <AnimatedElement animation="fadeIn" delay={0.2}>
+      {/* Mobile Header */}
+      <MobileHeader 
+        onSearch={(term) => {
+          // Navigate to search page with term
+          window.location.href = `/buscar?search=${encodeURIComponent(term)}`
+        }}
+        isSearchPage={false}
+      />
+
+      {/* Desktop Header - Hidden on mobile */}
+      <AnimatedElement animation="fadeIn" delay={0.2} className="hidden lg:block">
         <header className="glass border-b border-white/20 sticky top-0 z-50">
           <div className="container-custom py-6">
             <div className="flex items-center justify-between">
@@ -68,20 +79,8 @@ export default function HomePage() {
                 </MagneticElement>
               </nav>
               
-              <div className="flex items-center gap-4">
-                <MagneticElement strength={0.15}>
-                  <Button variant="ghost" asChild className="hover:bg-primary-50 hover:text-primary-700 transition-all duration-300">
-                    <Link href="/entrar">Entrar</Link>
-                  </Button>
-                </MagneticElement>
-                <MagneticElement strength={0.15}>
-                  <Button asChild className="bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 group">
-                    <Link href="/cadastro">
-                      Cadastre-se
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </MagneticElement>
+              <div className="flex items-center">
+                <UserMenu />
               </div>
             </div>
           </div>
@@ -271,9 +270,9 @@ export default function HomePage() {
               Junte-se à revolução do mercado imobiliário. Cadastre-se gratuitamente e comece hoje mesmo.
             </p>
           </AnimatedElement>
-          <StaggeredAnimation delay={0.4} stagger={0.1} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <StaggeredAnimation delay={0.4} stagger={0.1} className="flex flex-col sm:flex-row gap-6 justify-center">
             <MagneticElement strength={0.15}>
-              <Button size="lg" asChild className="bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group px-8 py-4 text-lg">
+              <Button size="xl" variant="gradient" asChild>
                 <Link href="/buscar">
                   <MapPin className="w-5 h-5 mr-2" />
                   Buscar Terrenos
@@ -282,7 +281,7 @@ export default function HomePage() {
               </Button>
             </MagneticElement>
             <MagneticElement strength={0.15}>
-              <Button size="lg" variant="outline" asChild className="border-2 border-primary-300 text-primary-700 hover:bg-primary-50 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg">
+              <Button size="xl" variant="outline" asChild>
                 <Link href="/vender">
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Anunciar Terreno
