@@ -45,9 +45,9 @@ export function PropertyCardAirbnb({
   const [wishlistState, setWishlistState] = useState(isWishlisted)
 
   const sizeClasses = {
-    small: 'w-full max-w-xs',
-    medium: 'w-full max-w-sm',
-    large: 'w-full max-w-md'
+    small: 'w-full',
+    medium: 'w-full',
+    large: 'w-full'
   }
 
   const imageSizeClasses = {
