@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import InteractiveMap from '@/components/map/interactive-map'
+import { toMapProperty } from '@/types/property'
 import { 
   Search,
   Filter,
@@ -24,11 +25,13 @@ import {
 interface Property {
   id: number
   title: string
+  description: string
   location: string
   price: string
   area: string
   rating: number
   coordinates: [number, number]
+  images: string[]
   image: string
 }
 
@@ -43,31 +46,37 @@ export default function MapMobilePage() {
     {
       id: 1,
       title: 'Terreno Vista Panorâmica',
+      description: 'Excelente terreno com vista panorâmica da cidade',
       location: 'Jardim Europa, SP',
       price: 'R$ 750.000',
       area: '500m²',
       rating: 4.9,
       coordinates: [-46.633308, -23.550520], // [lng, lat]
+      images: ['https://images.unsplash.com/photo-1601918774946-25832a4be0d6?w=300&h=200&fit=crop'],
       image: 'https://images.unsplash.com/photo-1601918774946-25832a4be0d6?w=300&h=200&fit=crop'
     },
     {
       id: 2,
       title: 'Lote em Condomínio',
+      description: 'Lote em condomínio fechado com segurança 24h',
       location: 'Alphaville, Barueri',
       price: 'R$ 450.000',
       area: '350m²',
       rating: 4.7,
       coordinates: [-46.673308, -23.520520], // [lng, lat]
+      images: ['https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop'],
       image: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop'
     },
     {
       id: 3,
       title: 'Terreno Comercial',
+      description: 'Terreno ideal para comércio em avenida movimentada',
       location: 'Vila Olímpia, SP',
       price: 'R$ 1.200.000',
       area: '800m²',
       rating: 4.8,
       coordinates: [-46.653308, -23.580520], // [lng, lat]
+      images: ['https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300&h=200&fit=crop'],
       image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300&h=200&fit=crop'
     }
   ]
@@ -115,8 +124,11 @@ export default function MapMobilePage() {
       <div className="relative w-full h-full pt-16 pb-16">
         <InteractiveMap
           className="w-full h-full"
-          properties={mapProperties}
-          onPropertyClick={handlePropertyClick}
+          properties={mapProperties.map(toMapProperty)}
+          onPropertyClick={(mapProp) => {
+            const originalProp = mapProperties.find(p => p.id === mapProp.id)
+            if (originalProp) handlePropertyClick(originalProp)
+          }}
           initialCenter={[-46.633308, -23.550520]} // São Paulo center
           initialZoom={10}
           showControls={false}

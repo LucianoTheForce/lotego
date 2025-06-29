@@ -3,7 +3,7 @@
 import React from 'react'
 
 interface ResponsiveLayoutProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   mobileComponent?: React.ReactNode
   desktopComponent?: React.ReactNode
   className?: string

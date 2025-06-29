@@ -4,25 +4,17 @@ import { useRef, useEffect, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { MAPBOX_TOKEN, MAPBOX_STYLE } from '@/lib/mapbox/config'
+import { MapProperty } from '@/types/property'
 
 // Set the access token
 if (typeof window !== 'undefined' && MAPBOX_TOKEN) {
   mapboxgl.accessToken = MAPBOX_TOKEN
 }
 
-interface Property {
-  id: number
-  title: string
-  price: string
-  location: string
-  coordinates: [number, number] // [lng, lat]
-  image: string
-}
-
 interface InteractiveMapProps {
   className?: string
-  properties?: Property[]
-  onPropertyClick?: (property: Property) => void
+  properties?: MapProperty[]
+  onPropertyClick?: (property: MapProperty) => void
   initialCenter?: [number, number]
   initialZoom?: number
   showControls?: boolean
@@ -48,7 +40,7 @@ export default function InteractiveMap({
   }
 
   // Add markers for properties
-  const addMarkers = (propertiesToAdd: Property[]) => {
+  const addMarkers = (propertiesToAdd: MapProperty[]) => {
     clearMarkers()
     
     propertiesToAdd.forEach(property => {

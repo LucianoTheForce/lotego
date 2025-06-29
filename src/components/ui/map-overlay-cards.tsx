@@ -12,6 +12,12 @@ interface Property {
   price: number
   area: number
   location: string
+  address: string
+  city: string
+  state: string
+  zip_code: string
+  type: string
+  status: string
   coordinates: { lat: number; lng: number }
   images: string[]
   features: string[]

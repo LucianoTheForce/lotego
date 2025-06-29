@@ -80,3 +80,75 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  ○ Compiling /_not-found ...
  ✓ Compiled /_not-found in 840ms (965 modules)
  GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1114ms
+ ✓ Compiled in 1021ms (955 modules)
+ ✓ Compiled /api/properties in 205ms (547 modules)
+ GET /api/properties?page=1&limit=10 200 in 329ms
+ GET /buscar?page=1 200 in 100ms
+ GET /buscar?page=1 200 in 27ms
+ ✓ Compiled in 868ms (973 modules)
+ GET /buscar?page=1 200 in 136ms
+ ✓ Compiled /_not-found in 295ms (963 modules)
+ ⨯ Error: Cannot find module './447.js'
+Require stack:
+- /home/he_orce/projetos/lotego/.next/server/webpack-runtime.js
+- /home/he_orce/projetos/lotego/.next/server/app/_not-found/page.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/server/require.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/server/load-components.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/build/utils.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/build/swc/options.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/build/swc/index.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/build/analysis/parse-module.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/build/analysis/get-page-static-info.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/server/lib/router-server.js
+- /home/he_orce/projetos/lotego/node_modules/next/dist/server/lib/start-server.js
+    at __webpack_require__.f.require (.next/server/webpack-runtime.js:203:28)
+    at <unknown> (.next/server/webpack-runtime.js:116:40)
+    at Array.reduce (<anonymous>)
+    at __webpack_require__.e (.next/server/webpack-runtime.js:115:67)
+    at Array.map (<anonymous>)
+    at __webpack_require__.X (.next/server/webpack-runtime.js:167:22)
+    at <unknown> (.next/server/app/_not-found/page.js:1:1789)
+    at Object.<anonymous> (.next/server/app/_not-found/page.js:1:1839) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 4.7s (1279 modules)
+ GET /_next/static/css/app/layout.css?v=1751172673572 500 in 12326ms
+ GET /buscar?page=1 200 in 3323ms
+ GET /buscar?page=1 200 in 64ms
+ ⨯ TypeError: Cannot read properties of undefined (reading 'call')
+    at Object.t [as require] (.next/server/webpack-runtime.js:1:128)
+    at JSON.parse (<anonymous>) {
+  digest: '2469483617'
+}
+TypeError: Cannot read properties of undefined (reading 'call')
+    at Object.t [as require] (.next/server/webpack-runtime.js:1:128)
+    at JSON.parse (<anonymous>)
+ ⨯ TypeError: Cannot read properties of undefined (reading 'call')
+    at Object.t [as require] (.next/server/webpack-runtime.js:1:128)
+    at JSON.parse (<anonymous>) {
+  page: '/buscar'
+}
+ GET /buscar?page=1 500 in 1746ms
+ ⨯ TypeError: Cannot read properties of undefined (reading 'call')
+    at Object.t [as require] (.next/server/webpack-runtime.js:1:128)
+    at JSON.parse (<anonymous>) {
+  digest: '2469483617'
+}
+TypeError: Cannot read properties of undefined (reading 'call')
+    at Object.t [as require] (.next/server/webpack-runtime.js:1:128)
+    at JSON.parse (<anonymous>)
+ ⨯ TypeError: Cannot read properties of undefined (reading 'call')
+    at Object.t [as require] (.next/server/webpack-runtime.js:1:128)
+    at JSON.parse (<anonymous>)
+ GET /.well-known/appspecific/com.chrome.devtools.json 500 in 1268ms
+ ✓ Compiled in 895ms (676 modules)
+ ✓ Compiled in 607ms (672 modules)
+ ✓ Compiled in 419ms (672 modules)
+ ✓ Compiled in 351ms (672 modules)
+ ✓ Compiled in 390ms (672 modules)
+ ✓ Compiled in 351ms (672 modules)
+ ✓ Compiled in 391ms (672 modules)
+ ✓ Compiled in 454ms (672 modules)

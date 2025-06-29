@@ -255,22 +255,20 @@ function SearchPageContent() {
                 ))}
               </div>
             ) : (
-              <StaggeredList isVisible={!loading}>
-                <PropertyGrid columns={2} gap="md">
-                  {properties.map(property => (
-                    <PropertyCardAirbnb
-                      key={property.id}
-                      {...property}
-                      rating={4.8}
-                      reviewCount={12}
-                      distance="5 km de distância"
-                      onClick={() => handlePropertySelect(property)}
-                      onWishlist={handleWishlist}
-                      size="medium"
-                    />
-                  ))}
-                </PropertyGrid>
-              </StaggeredList>
+              <PropertyGrid columns={2} gap="md">
+                {properties.map(property => (
+                  <PropertyCardAirbnb
+                    key={property.id}
+                    {...property}
+                    rating={4.8}
+                    reviewCount={12}
+                    distance="5 km de distância"
+                    onClick={() => handlePropertySelect(property)}
+                    onWishlist={handleWishlist}
+                    size="medium"
+                  />
+                ))}
+              </PropertyGrid>
             )}
             
             {/* Pagination */}
