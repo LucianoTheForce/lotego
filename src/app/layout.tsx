@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@/styles/mobile-animations.css";
 import { SmoothScrollingProvider } from "@/components/animations/smooth-scrolling-provider";
 import { PageTransition } from "@/components/animations/page-transition";
 import { PerformanceMonitor } from "@/components/animations/performance-optimizer";

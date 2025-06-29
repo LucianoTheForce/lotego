@@ -1,185 +1,201 @@
 'use client'
 
-import { useState } from 'react'
-import { Search, Filter, User, Menu, MapPin, Heart } from 'lucide-react'
-import { PropertyCardAirbnb } from '@/components/ui/property-card-airbnb'
-
-// Mock data - primeiras propriedades em destaque
-const featuredProperties = [
-  {
-    id: 1,
-    title: "Terreno em Condomínio Fechado",
-    location: "Alphaville, Barueri - SP",
-    price: 450000,
-    area: 450,
-    rating: 4.8,
-    reviewCount: 23,
-    images: [
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=300&fit=crop",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop"
-    ],
-    features: ["Portaria 24h", "Área Verde", "Clube"],
-    distance: "15 km de você"
-  },
-  {
-    id: 2,
-    title: "Lote Comercial Centro",
-    location: "Centro, Uberaba - MG",
-    price: 280000,
-    area: 400,
-    rating: 4.9,
-    reviewCount: 17,
-    images: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&h=300&fit=crop"
-    ],
-    features: ["Alto movimento", "Esquina", "Comercial"],
-    distance: "2 km do centro"
-  }
-]
-
-const categories = [
-  { id: 'rural', name: 'Rural', icon: '🌾', active: false },
-  { id: 'urbano', name: 'Urbano', icon: '🏙️', active: true },
-  { id: 'comercial', name: 'Comercial', icon: '🏢', active: false },
-  { id: 'residencial', name: 'Residencial', icon: '🏡', active: false },
-  { id: 'investimento', name: 'Investimento', icon: '💰', active: false },
-]
+import React from 'react'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { MapPin, Search, TrendingUp, Shield, Clock, Star } from 'lucide-react'
 
 export default function HomeMobilePage() {
-  const [activeCategory, setActiveCategory] = useState('urbano')
+  const [searchQuery, setSearchQuery] = React.useState('')
+
+  const features = [
+    {
+      icon: MapPin,
+      title: 'Localização Privilegiada',
+      description: 'Terrenos em áreas valorizadas'
+    },
+    {
+      icon: Shield,
+      title: 'Compra Segura',
+      description: 'Documentação verificada'
+    },
+    {
+      icon: Clock,
+      title: 'Visita Agendada',
+      description: 'Escolha o melhor horário'
+    }
+  ]
+
+  const featuredProperties = [
+    {
+      id: 1,
+      title: 'Terreno em Condomínio Fechado',
+      location: 'Alphaville, SP',
+      price: 'R$ 450.000',
+      area: '450m²',
+      image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop',
+      rating: 4.8
+    },
+    {
+      id: 2,
+      title: 'Lote Comercial Prime',
+      location: 'Centro, Campinas',
+      price: 'R$ 890.000',
+      area: '600m²',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop',
+      rating: 4.9
+    }
+  ]
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="px-4 pt-12 pb-4">
-          {/* Top Bar */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center space-x-3">
-              <button className="p-2 rounded-full bg-gray-100">
-                <Menu className="w-5 h-5 text-gray-700" />
-              </button>
-              <h1 className="text-2xl font-black text-rose-500">LotGo</h1>
-            </div>
-            
-            <div className="flex items-center space-x-3">
-              <button className="p-2 rounded-full bg-gray-100">
-                <User className="w-5 h-5 text-gray-700" />
-              </button>
-            </div>
-          </div>
-
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-b from-green-600 to-green-700 text-white">
+        <div className="px-4 pt-8 pb-6">
+          <h1 className="text-3xl font-bold mb-2">LotGo</h1>
+          <p className="text-green-100 mb-6">Encontre o terreno dos seus sonhos</p>
+          
           {/* Search Bar */}
-          <div className="bg-white border border-gray-200 rounded-full shadow-sm p-4">
-            <div className="flex items-center">
-              <Search className="w-5 h-5 text-gray-400 mr-3" />
-              <div className="flex-1">
-                <div className="text-sm font-semibold text-gray-900">Onde você quer construir?</div>
-                <div className="text-xs text-gray-500">Qualquer lugar • Qualquer tipo • Qualquer preço</div>
-              </div>
-              <div className="w-8 h-8 bg-rose-500 rounded-full flex items-center justify-center">
-                <Search className="w-4 h-4 text-white" />
-              </div>
-            </div>
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Input
+              type="text"
+              placeholder="Buscar por cidade, bairro..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-12 pr-4 h-14 bg-white text-gray-900 border-0 shadow-lg"
+              variant="modern"
+            />
+          </div>
+          
+          <div className="flex gap-2 mt-4">
+            <Link href="/search-mobile" className="flex-1">
+              <Button variant="secondary" className="w-full h-12 font-semibold">
+                <MapPin className="mr-2 h-4 w-4" />
+                Ver Mapa
+              </Button>
+            </Link>
+            <Link href="/search-mobile" className="flex-1">
+              <Button variant="secondary" className="w-full h-12 font-semibold">
+                <Search className="mr-2 h-4 w-4" />
+                Busca Avançada
+              </Button>
+            </Link>
           </div>
         </div>
-      </header>
+      </div>
 
-      {/* Categories */}
-      <div className="px-4 py-4 border-b border-gray-100">
-        <div className="flex space-x-6 overflow-x-auto pb-2">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`flex flex-col items-center space-y-2 min-w-0 ${
-                activeCategory === category.id ? 'opacity-100' : 'opacity-60'
-              }`}
-            >
-              <div className={`text-2xl p-3 rounded-xl ${
-                activeCategory === category.id ? 'bg-gray-100' : ''
-              }`}>
-                {category.icon}
+      {/* Stats Section */}
+      <div className="px-4 -mt-6">
+        <Card className="bg-white shadow-xl border-0">
+          <CardContent className="p-4">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="text-2xl font-bold text-green-600">2.5k+</div>
+                <div className="text-xs text-gray-600">Terrenos</div>
               </div>
-              <span className={`text-xs font-medium ${
-                activeCategory === category.id ? 'text-gray-900' : 'text-gray-600'
-              }`}>
-                {category.name}
-              </span>
-              {activeCategory === category.id && (
-                <div className="w-6 h-0.5 bg-gray-900 rounded-full" />
-              )}
-            </button>
+              <div>
+                <div className="text-2xl font-bold text-green-600">98%</div>
+                <div className="text-xs text-gray-600">Satisfação</div>
+              </div>
+              <div>
+                <div className="text-2xl font-bold text-green-600">24h</div>
+                <div className="text-xs text-gray-600">Resposta</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Features */}
+      <div className="px-4 mt-8">
+        <h2 className="text-xl font-bold mb-4 text-gray-900">Por que escolher a LotGo?</h2>
+        <div className="space-y-3">
+          {features.map((feature, index) => (
+            <Card key={index} className="border-gray-200 hover:shadow-md transition-shadow fade-in-up stagger-item">
+              <CardContent className="p-4 flex items-center gap-4">
+                <div className="bg-green-100 p-3 rounded-full">
+                  <feature.icon className="h-5 w-5 text-green-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+                  <p className="text-sm text-gray-600">{feature.description}</p>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
 
-      {/* Filter Bar */}
-      <div className="px-4 py-3 border-b border-gray-100">
-        <div className="flex items-center space-x-3">
-          <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-full">
-            <Filter className="w-4 h-4" />
-            <span className="text-sm font-medium">Filtros</span>
-          </button>
-          <button className="px-4 py-2 border border-gray-300 rounded-full">
-            <span className="text-sm font-medium">Preço</span>
-          </button>
-          <button className="px-4 py-2 border border-gray-300 rounded-full">
-            <span className="text-sm font-medium">Área</span>
-          </button>
+      {/* Featured Properties */}
+      <div className="px-4 mt-8 pb-24">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-xl font-bold text-gray-900">Destaques</h2>
+          <Link href="/search-mobile">
+            <Button variant="ghost" size="sm" className="text-green-600">
+              Ver todos
+            </Button>
+          </Link>
         </div>
-      </div>
-
-      {/* Content */}
-      <div className="px-4 py-6 pb-20">
-        {/* Section Title */}
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Terrenos próximos a você
-          </h2>
-          <p className="text-gray-600">Encontrados em Uberaba e região</p>
-        </div>
-
-        {/* Properties Grid */}
-        <div className="space-y-6">
-          {featuredProperties.map((property) => (
-            <PropertyCardAirbnb
-              key={property.id}
-              {...property}
-              size="large"
-              className="w-full"
-            />
+        
+        <div className="space-y-4">
+          {featuredProperties.map((property, index) => (
+            <Link key={property.id} href={`/property-mobile/${property.id}`}>
+              <Card className="overflow-hidden border-gray-200 hover:shadow-lg transition-all card-hover fade-in-up stagger-item touch-feedback">
+                <div className="relative h-48">
+                  <img
+                    src={property.image}
+                    alt={property.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+                    <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                    <span className="text-sm font-semibold">{property.rating}</span>
+                  </div>
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="font-bold text-lg text-gray-900 mb-1">{property.title}</h3>
+                  <p className="text-sm text-gray-600 mb-2 flex items-center gap-1">
+                    <MapPin className="h-3 w-3" />
+                    {property.location}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-2xl font-bold text-green-600">{property.price}</p>
+                      <p className="text-sm text-gray-600">{property.area}</p>
+                    </div>
+                    <Button size="sm" variant="green" className="button-press">
+                      Ver Detalhes
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
-
-        {/* Load More */}
-        <div className="mt-8 text-center">
-          <button className="text-gray-900 font-semibold underline">
-            Mostrar mais terrenos
-          </button>
-        </div>
       </div>
 
-      {/* Bottom Tab Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
-        <div className="flex items-center justify-around">
-          <button className="flex flex-col items-center py-2">
-            <Search className="w-5 h-5 text-rose-500" />
-            <span className="text-xs font-medium text-rose-500 mt-1">Buscar</span>
-          </button>
-          <button className="flex flex-col items-center py-2">
-            <Heart className="w-5 h-5 text-gray-400" />
-            <span className="text-xs text-gray-600 mt-1">Favoritos</span>
-          </button>
-          <button className="flex flex-col items-center py-2">
-            <MapPin className="w-5 h-5 text-gray-400" />
-            <span className="text-xs text-gray-600 mt-1">Mapa</span>
-          </button>
-          <button className="flex flex-col items-center py-2">
-            <User className="w-5 h-5 text-gray-400" />
-            <span className="text-xs text-gray-600 mt-1">Perfil</span>
-          </button>
+      {/* Bottom Navigation */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div className="grid grid-cols-4 h-16">
+          <Link href="/home-mobile" className="flex flex-col items-center justify-center text-green-600">
+            <MapPin className="h-5 w-5 mb-1" />
+            <span className="text-xs font-medium">Início</span>
+          </Link>
+          <Link href="/search-mobile" className="flex flex-col items-center justify-center text-gray-600">
+            <Search className="h-5 w-5 mb-1" />
+            <span className="text-xs font-medium">Buscar</span>
+          </Link>
+          <Link href="/map-mobile" className="flex flex-col items-center justify-center text-gray-600">
+            <MapPin className="h-5 w-5 mb-1" />
+            <span className="text-xs font-medium">Mapa</span>
+          </Link>
+          <Link href="/profile" className="flex flex-col items-center justify-center text-gray-600">
+            <TrendingUp className="h-5 w-5 mb-1" />
+            <span className="text-xs font-medium">Perfil</span>
+          </Link>
         </div>
       </div>
     </div>
