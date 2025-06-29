@@ -1,60 +1,82 @@
 
 > lotego@0.1.0 dev
-> next dev --turbopack --turbopack --port 3847
+> next dev --port 3848
 
-   ▲ Next.js 15.3.4 (Turbopack)
-   - Local:        http://localhost:3847
-   - Network:      http://10.255.255.254:3847
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3848
+   - Network:      http://10.255.255.254:3848
    - Environments: .env.local
 
  ✓ Starting...
- ✓ Compiled middleware in 469ms
- ✓ Ready in 1955ms
+ ✓ Ready in 1486ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 764ms (180 modules)
  ○ Compiling / ...
- ✓ Compiled / in 7.2s
- GET / 200 in 7793ms
- GET / 200 in 1687ms
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (100kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled / in 5.6s (924 modules)
+ GET / 200 in 5913ms
+ ○ Compiling /home-mobile ...
+ ✓ Compiled /home-mobile in 991ms (895 modules)
+ GET /home-mobile 200 in 1239ms
+ ✓ Compiled /search-mobile in 298ms (904 modules)
+ GET /search-mobile 200 in 496ms
+ ✓ Compiled /property-mobile/[id] in 273ms (927 modules)
+Error: Route "/property-mobile/[id]" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at PropertyMobilePage (src/app/property-mobile/[id]/page.tsx:38:15)
+  36 |   // Mock data - in real app, fetch based on params.id
+  37 |   const property = {
+> 38 |     id: params.id,
+     |               ^
+  39 |     title: 'Terreno Vista Panorâmica Premium',
+  40 |     location: 'Jardim Europa, São Paulo',
+  41 |     price: 'R$ 750.000',
+ GET /property-mobile/1 200 in 1028ms
+ ○ Compiling /map-mobile ...
+ ✓ Compiled /map-mobile in 566ms (944 modules)
+ GET /map-mobile 200 in 816ms
+ GET /home-mobile 200 in 157ms
  ○ Compiling /favicon.ico ...
- ✓ Compiled /favicon.ico in 1193ms
- GET /favicon.ico 200 in 1307ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 1577ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 267ms
- GET / 200 in 186ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 284ms
- GET /favicon.ico 200 in 248ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 242ms
- GET / 200 in 252ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 258ms
- GET /favicon.ico?favicon.45db1c09.ico 200 in 273ms
- ○ Compiling /buscar ...
- ✓ Compiled /buscar in 4.8s
- GET /buscar 200 in 5653ms
- ○ Compiling /api/properties ...
- ✓ Compiled /api/properties in 730ms
- GET /api/properties?page=1&limit=10 200 in 792ms
- GET /api/properties?page=1&limit=10 200 in 56ms
- GET /buscar?page=1 200 in 487ms
- GET /buscar?page=1 200 in 517ms
- GET /api/properties?page=1&limit=10 200 in 51ms
- GET /buscar?page=1 200 in 428ms
- GET / 200 in 179ms
- GET /buscar?search=uberaba 200 in 782ms
- GET /api/properties?search=uberaba&page=1&limit=10 200 in 53ms
- GET /api/properties?search=uberaba&page=1&limit=10 200 in 41ms
- GET /buscar?search=uberaba&page=1 200 in 403ms
- GET /buscar?search=uberaba&page=1 200 in 1038ms
- GET /api/properties?search=uberaba&page=1&limit=10 200 in 42ms
- GET /buscar?search=uberaba&page=1 200 in 493ms
- GET / 200 in 40ms
- GET / 200 in 151ms
- GET / 200 in 138ms
+ ⚠ Blocked cross-origin request from 172.24.232.248 to /_next/* resource. To allow this, configure "allowedDevOrigins" in next.config
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ✓ Compiled /favicon.ico in 1041ms (482 modules)
+ GET /favicon.ico 200 in 1208ms
+ GET /favicon.ico 200 in 17ms
+ GET /favicon.ico 200 in 13ms
+ ✓ Compiled /search-mobile in 93ms (495 modules)
+ GET /search-mobile 200 in 169ms
+ ✓ Compiled /map-mobile in 99ms (505 modules)
+ GET /map-mobile 200 in 157ms
+ ✓ Compiled in 619ms (423 modules)
+ ✓ Compiled in 363ms (423 modules)
+ ✓ Compiled in 630ms (423 modules)
+ ✓ Compiled in 300ms (424 modules)
+ ⚠ Found a change in next.config.js. Restarting the server to apply the changes...
+   ▲ Next.js 15.3.4
+   - Local:        http://localhost:3848
+   - Network:      http://10.255.255.254:3848
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.8s
+ ✓ Compiled /middleware in 343ms (180 modules)
  ○ Compiling / ...
- ✓ Compiled in 1910ms
- ✓ Compiled / in 971ms
- GET / 200 in 4216ms
- GET / 200 in 4199ms
- GET / 200 in 4228ms
- GET / 200 in 3748ms
- ○ Compiling /entrar ...
- ✓ Compiled /entrar in 1873ms
- GET /entrar 200 in 1944ms
+ ✓ Compiled / in 4.2s (880 modules)
+ GET / 200 in 4650ms
+ GET / 200 in 195ms
+ ✓ Compiled /favicon.ico in 321ms (506 modules)
+ GET /favicon.ico 200 in 457ms
+ GET /favicon.ico 200 in 16ms
+ ○ Compiling /buscar ...
+ ✓ Compiled /buscar in 2.1s (970 modules)
+ GET /buscar 200 in 2292ms
+ GET /buscar 200 in 27ms
+ ✓ Compiled /api/properties in 184ms (961 modules)
+ GET /api/properties?page=1&limit=10 200 in 235ms
+ GET /api/properties?page=1&limit=10 200 in 11ms
+ GET /buscar?page=1 200 in 52ms
+ GET /buscar?page=1 200 in 21ms
+ GET /api/properties?page=1&limit=10 200 in 15ms
+ GET /buscar?page=1 200 in 19ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 840ms (965 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1114ms

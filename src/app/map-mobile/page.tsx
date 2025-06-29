@@ -2,9 +2,11 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import InteractiveMap from '@/components/map/interactive-map'
 import { 
   Search,
   Filter,
@@ -16,17 +18,28 @@ import {
   Minus,
   Plus,
   Star,
-  DollarSign,
   Maximize2
 } from 'lucide-react'
+
+interface Property {
+  id: number
+  title: string
+  location: string
+  price: string
+  area: string
+  rating: number
+  coordinates: [number, number]
+  image: string
+}
 
 export default function MapMobilePage() {
   const [searchQuery, setSearchQuery] = React.useState('')
   const [showPropertyCard, setShowPropertyCard] = React.useState(false)
-  const [selectedProperty, setSelectedProperty] = React.useState(null)
+  const [selectedProperty, setSelectedProperty] = React.useState<Property | null>(null)
+  const router = useRouter()
 
   // Mock properties data for map markers
-  const mapProperties = [
+  const mapProperties: Property[] = [
     {
       id: 1,
       title: 'Terreno Vista Panorâmica',
@@ -34,7 +47,7 @@ export default function MapMobilePage() {
       price: 'R$ 750.000',
       area: '500m²',
       rating: 4.9,
-      coordinates: { lat: -23.550520, lng: -46.633308 },
+      coordinates: [-46.633308, -23.550520], // [lng, lat]
       image: 'https://images.unsplash.com/photo-1601918774946-25832a4be0d6?w=300&h=200&fit=crop'
     },
     {
@@ -44,7 +57,7 @@ export default function MapMobilePage() {
       price: 'R$ 450.000',
       area: '350m²',
       rating: 4.7,
-      coordinates: { lat: -23.520520, lng: -46.673308 },
+      coordinates: [-46.673308, -23.520520], // [lng, lat]
       image: 'https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=300&h=200&fit=crop'
     },
     {
@@ -54,14 +67,20 @@ export default function MapMobilePage() {
       price: 'R$ 1.200.000',
       area: '800m²',
       rating: 4.8,
-      coordinates: { lat: -23.580520, lng: -46.653308 },
+      coordinates: [-46.653308, -23.580520], // [lng, lat]
       image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=300&h=200&fit=crop'
     }
   ]
 
-  const handleMarkerClick = (property: any) => {
+  const handlePropertyClick = (property: Property) => {
     setSelectedProperty(property)
     setShowPropertyCard(true)
+  }
+
+  const handleViewProperty = () => {
+    if (selectedProperty) {
+      router.push(`/property-mobile/${selectedProperty.id}`)
+    }
   }
 
   return (
@@ -94,43 +113,14 @@ export default function MapMobilePage() {
 
       {/* Map Container */}
       <div className="relative w-full h-full pt-16 pb-16">
-        {/* Mock Map Background */}
-        <div className="w-full h-full bg-gradient-to-br from-green-100 to-blue-100 relative overflow-hidden">
-          {/* Map Pattern/Grid */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="grid grid-cols-12 h-full">
-              {Array.from({ length: 144 }, (_, i) => (
-                <div key={i} className="border border-gray-300"></div>
-              ))}
-            </div>
-          </div>
-
-          {/* Property Markers */}
-          {mapProperties.map((property) => (
-            <div
-              key={property.id}
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-              style={{
-                top: `${40 + (property.id * 15)}%`,
-                left: `${35 + (property.id * 20)}%`
-              }}
-              onClick={() => handleMarkerClick(property)}
-            >
-              <div className="bg-green-600 text-white rounded-full p-2 shadow-lg hover:scale-110 transition-transform marker-pulse">
-                <MapPin className="h-5 w-5" />
-              </div>
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 bg-white rounded-lg px-2 py-1 shadow-md text-xs font-semibold whitespace-nowrap">
-                {property.price}
-              </div>
-            </div>
-          ))}
-
-          {/* Central Area Indicator */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
-            <div className="w-8 h-8 border-2 border-blue-500 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-ping"></div>
-          </div>
-        </div>
+        <InteractiveMap
+          className="w-full h-full"
+          properties={mapProperties}
+          onPropertyClick={handlePropertyClick}
+          initialCenter={[-46.633308, -23.550520]} // São Paulo center
+          initialZoom={10}
+          showControls={false}
+        />
       </div>
 
       {/* Map Controls */}
@@ -204,11 +194,13 @@ export default function MapMobilePage() {
                       <Star className="h-3 w-3 text-yellow-500 fill-current" />
                       <span className="text-xs">{selectedProperty.rating}</span>
                     </div>
-                    <Link href={`/property-mobile/${selectedProperty.id}`}>
-                      <Button size="sm" variant="green" className="text-xs h-8">
-                        Ver
-                      </Button>
-                    </Link>
+                    <Button 
+                      size="sm" 
+                      className="text-xs h-8 bg-green-600 hover:bg-green-700 text-white"
+                      onClick={handleViewProperty}
+                    >
+                      Ver
+                    </Button>
                   </div>
                 </div>
               </CardContent>

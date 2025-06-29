@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -18,11 +18,9 @@ import {
   MapPin,
   DollarSign,
   Home,
-  TrendingUp,
   Eye,
   Calendar,
   Star,
-  Clock,
   BarChart3,
   Activity
 } from 'lucide-react'
@@ -55,14 +53,14 @@ interface RecentActivity {
 export default function DashboardPage() {
   const { user, logout } = useAuthContext()
   const [activeTab, setActiveTab] = useState('overview')
-  const [stats, setStats] = useState<DashboardStats>({
+  const [stats] = useState<DashboardStats>({
     savedProperties: 12,
     recentViews: 45,
     totalSpent: 0,
     averagePrice: 385000
   })
   
-  const [savedProperties, setSavedProperties] = useState<SavedProperty[]>([
+  const [savedProperties] = useState<SavedProperty[]>([
     {
       id: 1,
       title: "Terreno Premium em Uberaba",
@@ -92,7 +90,7 @@ export default function DashboardPage() {
     }
   ])
 
-  const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([
+  const [recentActivity] = useState<RecentActivity[]>([
     {
       id: 1,
       type: 'save',

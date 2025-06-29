@@ -167,9 +167,6 @@ function SearchPageContent() {
     }
   }
 
-  const handlePropertyCardClick = (property: Property) => {
-    handlePropertyClick(property)
-  }
 
   const handleSearchSubmit = (term?: string) => {
     if (term !== undefined) {

@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { MapPin, Search, TrendingUp, Shield, Clock, Star } from 'lucide-react'
+import { MapPin, Search, TrendingUp, Shield, Clock, Star, Home } from 'lucide-react'
 
-export default function HomeMobilePage() {
+export default function HomeMobile() {
   const [searchQuery, setSearchQuery] = React.useState('')
 
   const features = [
@@ -66,12 +66,11 @@ export default function HomeMobilePage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-12 pr-4 h-14 bg-white text-gray-900 border-0 shadow-lg"
-              variant="modern"
             />
           </div>
           
           <div className="flex gap-2 mt-4">
-            <Link href="/search-mobile" className="flex-1">
+            <Link href="/map-mobile" className="flex-1">
               <Button variant="secondary" className="w-full h-12 font-semibold">
                 <MapPin className="mr-2 h-4 w-4" />
                 Ver Mapa
@@ -93,7 +92,7 @@ export default function HomeMobilePage() {
           <CardContent className="p-4">
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold text-green-600">2.5k+</div>
+                <div className="text-2xl font-bold text-green-600">5.000+</div>
                 <div className="text-xs text-gray-600">Terrenos</div>
               </div>
               <div>
@@ -111,10 +110,10 @@ export default function HomeMobilePage() {
 
       {/* Features */}
       <div className="px-4 mt-8">
-        <h2 className="text-xl font-bold mb-4 text-gray-900">Por que escolher a LotGo?</h2>
+        <h2 className="text-xl font-bold mb-4 text-gray-900">Por que escolher o LotGo?</h2>
         <div className="space-y-3">
           {features.map((feature, index) => (
-            <Card key={index} className="border-gray-200 hover:shadow-md transition-shadow fade-in-up stagger-item">
+            <Card key={index} className="border-gray-200 hover:shadow-md transition-shadow">
               <CardContent className="p-4 flex items-center gap-4">
                 <div className="bg-green-100 p-3 rounded-full">
                   <feature.icon className="h-5 w-5 text-green-600" />
@@ -132,7 +131,7 @@ export default function HomeMobilePage() {
       {/* Featured Properties */}
       <div className="px-4 mt-8 pb-24">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-gray-900">Destaques</h2>
+          <h2 className="text-xl font-bold text-gray-900">Terrenos em Destaque</h2>
           <Link href="/search-mobile">
             <Button variant="ghost" size="sm" className="text-green-600">
               Ver todos
@@ -143,7 +142,7 @@ export default function HomeMobilePage() {
         <div className="space-y-4">
           {featuredProperties.map((property) => (
             <Link key={property.id} href={`/property-mobile/${property.id}`}>
-              <Card className="overflow-hidden border-gray-200 hover:shadow-lg transition-all card-hover fade-in-up stagger-item touch-feedback">
+              <Card className="overflow-hidden border-gray-200 hover:shadow-lg transition-all">
                 <div className="relative h-48">
                   <img
                     src={property.image}
@@ -166,7 +165,7 @@ export default function HomeMobilePage() {
                       <p className="text-2xl font-bold text-green-600">{property.price}</p>
                       <p className="text-sm text-gray-600">{property.area}</p>
                     </div>
-                    <Button size="sm" variant="green" className="button-press">
+                    <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
                       Ver Detalhes
                     </Button>
                   </div>
@@ -181,7 +180,7 @@ export default function HomeMobilePage() {
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
         <div className="grid grid-cols-4 h-16">
           <Link href="/home-mobile" className="flex flex-col items-center justify-center text-green-600">
-            <MapPin className="h-5 w-5 mb-1" />
+            <Home className="h-5 w-5 mb-1" />
             <span className="text-xs font-medium">Início</span>
           </Link>
           <Link href="/search-mobile" className="flex flex-col items-center justify-center text-gray-600">

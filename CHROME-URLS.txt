@@ -1,0 +1,49 @@
+🚀 LOTGO - INTERFACE MOBILE AIRBNB
+
+✅ SERVIDOR RODANDO: http://172.24.232.248:3847
+
+📱 TELAS IMPLEMENTADAS:
+
+1. SPLASH SCREEN
+   http://172.24.232.248:3847/splash
+   - Logo animado LotGo
+   - Background gradiente rose
+   - Loading animation
+
+2. HOME MOBILE (PRINCIPAL)
+   http://172.24.232.248:3847/home-mobile
+   - Header com menu hamburger
+   - Search bar expansível estilo Airbnb
+   - Categorias horizontais (Rural, Urbano, Comercial...)
+   - Cards de propriedades grandes
+   - Bottom navigation tabs
+
+3. SEARCH EXPANDED  
+   http://172.24.232.248:3847/search-expanded
+   - Busca expandida estilo Airbnb
+   - Tabs: Terrenos/Visitas
+   - Formulário ONDE/QUANDO/ORÇAMENTO
+   - Recent searches e destinos populares
+
+4. MAP VIEW
+   http://172.24.232.248:3847/map-view
+   - Mapa com pins de preços
+   - Property card deslizante
+   - Toggle Mapa/Lista
+   - Pins interativos
+
+5. PROPERTY DETAIL
+   http://172.24.232.248:3847/property-detail
+   - Carrossel de imagens
+   - Info do proprietário
+   - Amenidades e reviews
+   - CTA button fixo
+
+🎯 COMO TESTAR:
+1. Abra o Chrome
+2. Cole qualquer URL acima
+3. Ative o modo mobile (F12 > Device Mode)
+4. Teste as animações e interações
+
+💡 RECOMENDAÇÃO:
+Comece com: http://172.24.232.248:3847/home-mobile
