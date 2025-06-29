@@ -6,7 +6,6 @@ import { MapPin, TrendingUp, Shield, ArrowRight, Sparkles, Zap, Globe } from "lu
 import { HeroMap } from "@/components/map/hero-map"
 import { SearchForm } from "@/components/search/search-form"
 import { MobileHeader } from "@/components/ui/mobile-header"
-import { UserMenu } from "@/components/ui/user-menu-simple"
 import { 
   AnimatedElement, 
   MagneticElement, 
@@ -38,7 +37,7 @@ export default function HomePage() {
         </FloatingElement>
       </div>
 
-      {/* Mobile Header */}
+      {/* Header */}
       <MobileHeader 
         onSearch={(term) => {
           // Navigate to search page with term
@@ -46,46 +45,6 @@ export default function HomePage() {
         }}
         isSearchPage={false}
       />
-
-      {/* Desktop Header - Hidden on mobile */}
-      <AnimatedElement animation="fadeIn" delay={0.2} className="hidden lg:block">
-        <header className="glass border-b border-white/20 sticky top-0 z-50">
-          <div className="container-custom py-6">
-            <div className="flex items-center justify-between">
-              <MagneticElement strength={0.2}>
-                <Link href="/" className="text-3xl font-black bg-gradient-to-r from-primary-600 via-purple-600 to-primary-800 bg-clip-text text-transparent">
-                  LotGo
-                </Link>
-              </MagneticElement>
-              
-              <nav className="hidden md:flex items-center gap-8">
-                <MagneticElement strength={0.1}>
-                  <Link href="/buscar" className="relative group text-neutral-700 hover:text-primary-600 transition-colors font-medium">
-                    Buscar Terrenos
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-purple-600 group-hover:w-full transition-all duration-300" />
-                  </Link>
-                </MagneticElement>
-                <MagneticElement strength={0.1}>
-                  <Link href="/vender" className="relative group text-neutral-700 hover:text-primary-600 transition-colors font-medium">
-                    Anunciar
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-purple-600 group-hover:w-full transition-all duration-300" />
-                  </Link>
-                </MagneticElement>
-                <MagneticElement strength={0.1}>
-                  <Link href="/sobre" className="relative group text-neutral-700 hover:text-primary-600 transition-colors font-medium">
-                    Como Funciona
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-purple-600 group-hover:w-full transition-all duration-300" />
-                  </Link>
-                </MagneticElement>
-              </nav>
-              
-              <div className="flex items-center">
-                <UserMenu />
-              </div>
-            </div>
-          </div>
-        </header>
-      </AnimatedElement>
 
       {/* Hero Section with 3D Map */}
       <section className="relative h-screen overflow-hidden">
