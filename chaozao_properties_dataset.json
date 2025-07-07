@@ -1,0 +1,278 @@
+{
+  "dataset_info": {
+    "source": "chaozao.com.br",
+    "extraction_date": "2025-07-06",
+    "total_properties_identified": "1000+",
+    "properties_detailed": 7,
+    "methodology": "Web scraping via sitemaps and individual property pages"
+  },
+  "sitemap_structure": {
+    "main_sitemap": "https://chaozao.com.br/sitemap.xml",
+    "sub_sitemaps": [
+      "https://chaozao.com.br/sitemap-0.xml",
+      "https://chaozao.com.br/sitemap-1.xml",
+      "https://chaozao.com.br/sitemap-2.xml",
+      "https://chaozao.com.br/sitemap-3.xml",
+      "https://chaozao.com.br/sitemap-4.xml",
+      "https://chaozao.com.br/sitemap-5.xml",
+      "https://chaozao.com.br/sitemap-6.xml",
+      "https://chaozao.com.br/sitemap-7.xml"
+    ],
+    "url_pattern": "https://chaozao.com.br/imovel/{property-description}/{code}"
+  },
+  "properties": [
+    {
+      "id": "TN2W4S",
+      "title": "Fazenda em Cristalândia - Tocantins",
+      "type": "Fazenda",
+      "price": 22400000,
+      "price_formatted": "R$ 22,400,000",
+      "area_hectares": 803,
+      "location": {
+        "city": "Cristalândia",
+        "state": "Tocantins",
+        "country": "Brazil",
+        "distance_from_capital": "172 km",
+        "distance_from_city": "35 km",
+        "distance_from_br153": "77 km"
+      },
+      "coordinates": {
+        "latitude": -10.601761,
+        "longitude": -49.194919,
+        "formatted": "10° 36' 6.34\" S, 49° 11' 41.71\" O"
+      },
+      "features": [
+        "2 houses",
+        "Simple barn",
+        "Cattle corral (needs renovation)",
+        "3 artesian wells",
+        "Clay content above 25%",
+        "55% suitable for farming",
+        "All pasture land"
+      ],
+      "description": "Toda em pasto. Planta mais ou menos 55% pra lavoura. 2 casas. Barracão simples. Curral precisando de reforma. 3 poços artesianos. Argila acima 25%.",
+      "reference_code": "FA0222",
+      "broker": "Rogério",
+      "photos_count": 24,
+      "url": "https://chaozao.com.br/imovel/fazenda-em-cristalandia-tocantins-com-area-de-803-ha-r-22400000-cod-tn2w4s/TN2W4S"
+    },
+    {
+      "id": "XL3LGQ",
+      "title": "Chácara em Igaratá - São Paulo",
+      "type": "Chácara",
+      "price": 235000,
+      "price_formatted": "R$ 235,000",
+      "area_m2": 8397,
+      "location": {
+        "city": "Igaratá",
+        "state": "São Paulo",
+        "neighborhood": "Morro Azul",
+        "distance_from_city": "5 km"
+      },
+      "coordinates": {
+        "latitude": -23.215219,
+        "longitude": -46.121558,
+        "formatted": "23° 12' 54.79\" S, 46° 7' 17.61\" O"
+      },
+      "features": [
+        "Mixed soil type",
+        "Undulating topography",
+        "Small river",
+        "Wire fence",
+        "CAR documentation",
+        "Legal Reserve 20%"
+      ],
+      "description": "Chácara with beautiful view for sale in Igaratá - SP. Contract includes descriptive memorial (inheritance). Great location, 5 km from city center.",
+      "reference_code": "CH079",
+      "listing_key": "j6y1GE8ZxYHASZf0",
+      "intended_use": "Leisure / Tourism",
+      "photos_count": 5,
+      "url": "https://chaozao.com.br/imovel/chacara-em-igarata-sao-paulo-com-area-de-8397-m-r-235000-cod-xl3lgq/XL3LGQ"
+    },
+    {
+      "id": "5WN66M",
+      "title": "Fazenda em Pium - Tocantins",
+      "type": "Fazenda",
+      "price": 13000000,
+      "price_formatted": "R$ 13,000,000",
+      "area_hectares": 503.36,
+      "location": {
+        "city": "Pium",
+        "state": "Tocantins",
+        "country": "Brazil"
+      },
+      "url": "https://chaozao.com.br/imovel/fazenda-em-pium-tocantins-com-area-de-50336-ha-r-13000000-cod-5wn66m/5WN66M"
+    },
+    {
+      "id": "HWH4XV",
+      "title": "Fazenda em Mozarlândia - Goiás",
+      "type": "Fazenda",
+      "price": 13000000,
+      "price_formatted": "R$ 13,000,000",
+      "area_hectares": 484,
+      "location": {
+        "city": "Mozarlândia",
+        "state": "Goiás",
+        "distance_from_city": "50 km"
+      },
+      "features": [
+        "14 pastures (Andropogon and Quicuio)",
+        "1 paddock",
+        "Corridor with handling areas",
+        "Excellent corral with chute and scale",
+        "Main house",
+        "Salt room",
+        "10 ponds",
+        "2 streams and multiple springs",
+        "Excellent water resources",
+        "14 km dirt road access",
+        "Documentation in order"
+      ],
+      "description": "Farm with 14 pastures, excellent corral facilities, main house, and abundant water resources. Accessible by 14 km of dirt road, suitable for all truck types.",
+      "listing_agent": "GH Imóveis (CRECI J.: nº 41.801)",
+      "payment_conditions": "Negotiable with owner",
+      "url": "https://chaozao.com.br/imovel/fazenda-em-mozarlandia-goias-com-area-de-484-ha-r-13000000-cod-hwh4xv/HWH4XV"
+    },
+    {
+      "id": "LYFG3C",
+      "title": "Fazenda em Carmo do Rio Verde - Goiás",
+      "type": "Fazenda",
+      "price": 5250000,
+      "price_formatted": "R$ 5,250,000",
+      "area_alqueires": 35,
+      "area_hectares": 170,
+      "location": {
+        "city": "Carmo do Rio Verde",
+        "state": "Goiás",
+        "country": "Brazil"
+      },
+      "coordinates": {
+        "latitude": -15.351431,
+        "longitude": -49.710342,
+        "formatted": "15° 21' 5.15\" S, 49° 42' 37.23\" O"
+      },
+      "features": [
+        "Undulating terrain",
+        "First-class agricultural land",
+        "Simple worker's house",
+        "Cattle corral",
+        "No electricity",
+        "Two reservoirs",
+        "Stream at property edge",
+        "23 alqueires in Brachiaria grass",
+        "10 km dirt road",
+        "Two streams crossing property"
+      ],
+      "description": "Fazenda de 35 alqueires. Município de Carmo do Rio Verde. Terra ondulada. Cultura de primeira. Casa simples de peão. Curral, não tem energia. Duas represas. Córrego no fundo. 23 alqueires, formada em Braquiara. 10 km estrada de chão, 2 córregos no meio da terra.",
+      "reference_code": "FA0033",
+      "photos_count": 36,
+      "url": "https://chaozao.com.br/imovel/fazenda-em-carmo-do-rio-verde-goias-com-area-de-1694-ha-r-5250000-cod-lyfg3c/LYFG3C"
+    },
+    {
+      "id": "8VLTUM",
+      "title": "Fazenda em Anápolis - Goiás",
+      "type": "Fazenda",
+      "price": 53960000,
+      "price_formatted": "R$ 53,960,000",
+      "area_hectares": 687.2,
+      "area_alqueires": 142,
+      "location": {
+        "city": "Anápolis",
+        "state": "Goiás",
+        "distance_from_city": "25 km (6 km dirt road)"
+      },
+      "coordinates": {
+        "latitude": -16.333283,
+        "longitude": -48.952575,
+        "formatted": "16° 19' 59.82\" S, 48° 57' 9.27\" O"
+      },
+      "features": [
+        "108 alqueires (523 hectares) suitable for farming",
+        "Divided into 4 sections/plots",
+        "Electricity available",
+        "2-bedroom house with living room, kitchen, bathroom, and veranda",
+        "Machinery shed",
+        "Artesian well",
+        "21,000-liter water tank",
+        "2 reservoirs",
+        "Stream on property",
+        "Fully fenced with wire fence",
+        "Clay content over 40%",
+        "Altitude above 1,000 meters"
+      ],
+      "soil_types": ["yellow", "red", "some gravel"],
+      "potential": "New main house construction",
+      "photos_count": 5,
+      "url": "https://chaozao.com.br/imovel/fazenda-em-anapolis-goias-com-area-de-6872-ha-r-53960000-cod-8vltum/8VLTUM"
+    },
+    {
+      "id": "TJV9Q2",
+      "title": "Chácara em Heitoraí - Goiás",
+      "type": "Chácara",
+      "price": 2500000,
+      "price_formatted": "R$ 2,500,000",
+      "area_m2": 48400,
+      "area_alqueires": 1,
+      "location": {
+        "city": "Heitoraí",
+        "state": "Goiás",
+        "distance_from_itaberai": "23 km (3.5 km unpaved road)"
+      },
+      "coordinates": {
+        "latitude": -15.718986,
+        "longitude": -49.826825,
+        "formatted": "15° 43' 8.35\" S, 49° 49' 36.57\" O"
+      },
+      "features": [
+        "2 Poultry Barns (125m x 12m each)",
+        "2 Metaza heaters",
+        "1 Metaza dehydrator",
+        "1 MWM 150 KVA generator",
+        "6 new line motors",
+        "2 silo motors",
+        "2 artesian wells",
+        "2 x 20,000-liter water reservoirs",
+        "1 main house",
+        "1 farmworker house",
+        "Fenced property with electric fence",
+        "Solar power system (98 panels, 7,500 KVA monthly capacity)"
+      ],
+      "business_type": "Poultry farming",
+      "current_contract": "SSA São Salvador Alimentos, Super Frango Itaberaí",
+      "potential_income": "R$ 40,000 to 50,000 per batch, plus chicken manure income",
+      "expansion_potential": "2 additional poultry barns",
+      "description": "Excelente oportunidade de negócio with fully documented property",
+      "url": "https://chaozao.com.br/imovel/chacara-em-heitorai-goias-com-area-de-48400-m-r-2500000-cod-tjv9q2/TJV9Q2"
+    }
+  ],
+  "contact_info": {
+    "company": "Chãozão",
+    "phone": "62 3030-1821",
+    "email": "contato@chaozao.com.br",
+    "address": "Avenida Deputado Jamel Cecílio, 2690 - Ed. Metropolitan Tokyo, Sala 1505 - Jardim Goiás, Goiânia - GO, 74810-100"
+  },
+  "analysis": {
+    "property_types": {
+      "fazenda": 5,
+      "chacara": 2
+    },
+    "states": {
+      "Goiás": 4,
+      "Tocantins": 2,
+      "São Paulo": 1
+    },
+    "price_range": {
+      "min": 235000,
+      "max": 53960000,
+      "average": 15585000
+    },
+    "common_features": [
+      "Water sources (wells, streams, reservoirs)",
+      "Pasture land",
+      "Cattle facilities",
+      "Houses/accommodations",
+      "Fencing",
+      "Road access"
+    ]
+  }
+}

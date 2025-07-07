@@ -1,0 +1,121 @@
+{
+  "analysis_date": "2025-07-07",
+  "total_properties_tested": 3,
+  "successful_extractions": 3,
+  "results": [
+    {
+      "property_id": "TN2W4S",
+      "url": "https://chaozao.com.br/imovel/fazenda-em-cristalandia-tocantins-com-area-de-803-ha-r-22400000-cod-tn2w4s/TN2W4S",
+      "whatsapp_numbers": [
+        {
+          "raw": "556230301821",
+          "formatted": "+556230301821",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "30301821"
+        },
+        {
+          "raw": "5562993076256",
+          "formatted": "+5562993076256",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "993076256"
+        },
+        {
+          "raw": "556230301821",
+          "formatted": "+556230301821",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "30301821"
+        },
+        {
+          "raw": "5562993076256",
+          "formatted": "+5562993076256",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "993076256"
+        }
+      ],
+      "telephone": [
+        "62 3030 1821"
+      ],
+      "extraction_successful": true
+    },
+    {
+      "property_id": "XL3LGQ",
+      "url": "https://chaozao.com.br/imovel/chacara-em-igarata-sao-paulo-com-area-de-8397-m-r-235000-cod-xl3lgq/XL3LGQ",
+      "whatsapp_numbers": [
+        {
+          "raw": "556230301821",
+          "formatted": "+556230301821",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "30301821"
+        },
+        {
+          "raw": "5562993076256",
+          "formatted": "+5562993076256",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "993076256"
+        },
+        {
+          "raw": "556230301821",
+          "formatted": "+556230301821",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "30301821"
+        },
+        {
+          "raw": "5562993076256",
+          "formatted": "+5562993076256",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "993076256"
+        }
+      ],
+      "telephone": [
+        "62 3030 1821"
+      ],
+      "extraction_successful": true
+    },
+    {
+      "property_id": "5WN66M",
+      "url": "https://chaozao.com.br/imovel/fazenda-em-pium-tocantins-com-area-de-50336-ha-r-13000000-cod-5wn66m/5WN66M",
+      "whatsapp_numbers": [
+        {
+          "raw": "556230301821",
+          "formatted": "+556230301821",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "30301821"
+        },
+        {
+          "raw": "5562993076256",
+          "formatted": "+5562993076256",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "993076256"
+        },
+        {
+          "raw": "556230301821",
+          "formatted": "+556230301821",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "30301821"
+        },
+        {
+          "raw": "5562993076256",
+          "formatted": "+5562993076256",
+          "country_code": "55",
+          "area_code": "62",
+          "number": "993076256"
+        }
+      ],
+      "telephone": [
+        "62 3030 1821"
+      ],
+      "extraction_successful": true
+    }
+  ]
+}

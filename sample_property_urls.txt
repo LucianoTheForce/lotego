@@ -1,0 +1,72 @@
+# URLs de Propriedades Identificadas no Chaozão.com.br
+# Total estimado: 1000+ propriedades
+
+# Amostras do Sitemap-0
+https://chaozao.com.br/imovel/fazenda-em-cristalandia-tocantins-com-area-de-803-ha-r-22400000-cod-tn2w4s/TN2W4S
+https://chaozao.com.br/imovel/chacara-em-igarata-sao-paulo-com-area-de-8397-m-r-235000-cod-xl3lgq/XL3LGQ
+https://chaozao.com.br/imovel/fazenda-em-pium-tocantins-com-area-de-50336-ha-r-13000000-cod-5wn66m/5WN66M
+
+# Amostras do Sitemap-1
+https://chaozao.com.br/imovel/chacara-em-heitorai-goias-com-area-de-48400-m-r-2500000-cod-tjv9q2/TJV9Q2
+https://chaozao.com.br/imovel/fazenda-em-mozarlandia-goias-com-area-de-484-ha-r-13000000-cod-hwh4xv/HWH4XV
+https://chaozao.com.br/imovel/fazenda-em-peixe-tocantins-com-area-de-1214-ha-r-25000000-cod-1qhbx8/1QHBX8
+
+# Amostras do Sitemap-2
+https://chaozao.com.br/imovel/fazenda-em-carmo-do-rio-verde-goias-com-area-de-1694-ha-r-5250000-cod-lyfg3c/LYFG3C
+https://chaozao.com.br/imovel/fazenda-em-fazenda-nova-goias-com-area-de-14278-ha-r-6000000-cod-v5bwvb/V5BWVB
+https://chaozao.com.br/imovel/chacara-em-barao-de-antonina-sao-paulo-com-area-de-24200-m-r-280000-cod-h3tv6e/H3TV6E
+
+# Amostras do Sitemap-3
+https://chaozao.com.br/imovel/fazenda-em-jangada-mato-grosso-com-area-de-1465-ha-r-42000000-cod-zg2f1j/ZG2F1J
+https://chaozao.com.br/imovel/fazenda-em-anapolis-goias-com-area-de-6872-ha-r-53960000-cod-8vltum/8VLTUM
+https://chaozao.com.br/imovel/fazenda-em-anastacio-mato-grosso-do-sul-com-area-de-162-ha-r-6000000-cod-x5sh4v/X5SH4V
+
+# Amostras do Sitemap-4
+https://chaozao.com.br/imovel/fazenda-em-capao-bonito-sao-paulo-com-area-de-3291-ha-r-42000000-cod-0q1n7u/0Q1N7U
+https://chaozao.com.br/imovel/fazenda-em-santa-branca-sao-paulo-com-area-de-2904-ha-r-84000000-cod-2vui87/2VUI87
+https://chaozao.com.br/imovel/fazenda-em-aracu-goias-com-area-de-210-ha-r-12000000-cod-mwlqht/MWLQHT
+
+# Amostras do Sitemap-5
+https://chaozao.com.br/imovel/fazenda-em-cristalina-goias-com-area-de-1959-ha-r-250000000-cod-oto3p1/OTO3P1
+https://chaozao.com.br/imovel/chacara-em-uberlandia-minas-gerais-com-area-de-5000-m-r-600000-cod-8fue3y/8FUE3Y
+https://chaozao.com.br/imovel/fazenda-em-miranorte-tocantins-com-area-de-1452-ha-r-30000000-cod-22dx39/22DX39
+
+# Amostras do Sitemap-6
+https://chaozao.com.br/imovel/fazenda-em-terra-nova-do-norte-mato-grosso-com-area-de-1783-ha-r-60000000-cod-n4q4hw/N4Q4HW
+https://chaozao.com.br/imovel/rancho-em-frutal-minas-gerais-com-area-de-250-m-r-145000-cod-xw62z6/XW62Z6
+https://chaozao.com.br/imovel/fazenda-em-ibirarema-sao-paulo-com-area-de-7986-ha-r-99000000-cod-ar8g2b/AR8G2B
+
+# Amostras do Sitemap-7
+https://chaozao.com.br/imovel/sitio-em-jambeiro-sao-paulo-com-area-de-4114-ha-r-2100000-cod-ucbbtm/UCBBTM
+https://chaozao.com.br/imovel/fazenda-em-alto-araguaia-mato-grosso-com-area-de-5800-ha-r-52200000-cod-zzzdcp/ZZZDCP
+https://chaozao.com.br/imovel/fazenda-em-rondonopolis-mato-grosso-com-area-de-2062-ha-r-7225000-cod-xm3zd7/XM3ZD7
+
+# Padrões Identificados de URLs:
+# 1. Fazendas: /imovel/fazenda-em-{cidade}-{estado}-com-area-de-{area}-ha-r-{preco}-cod-{codigo}/{CODIGO}
+# 2. Chácaras: /imovel/chacara-em-{cidade}-{estado}-com-area-de-{area}-m-r-{preco}-cod-{codigo}/{CODIGO}
+# 3. Sítios: /imovel/sitio-em-{cidade}-{estado}-com-area-de-{area}-ha-r-{preco}-cod-{codigo}/{CODIGO}
+# 4. Ranchos: /imovel/rancho-em-{cidade}-{estado}-com-area-de-{area}-m-r-{preco}-cod-{codigo}/{CODIGO}
+
+# Estados Identificados:
+# - Goiás (GO): Maior concentração
+# - Tocantins (TO): Segunda maior concentração
+# - Mato Grosso (MT): Terceira maior concentração
+# - São Paulo (SP): Quarta maior concentração
+# - Minas Gerais (MG): Quinta maior concentração
+# - Mato Grosso do Sul (MS): Sexta maior concentração
+
+# Tipos de Propriedades:
+# - Fazendas: Maioria das propriedades
+# - Chácaras: Segunda maior categoria
+# - Sítios: Terceira maior categoria
+# - Ranchos: Menor categoria
+
+# Faixas de Preço (observadas nas amostras):
+# - Mínimo: R$ 145.000 (Rancho em Frutal-MG)
+# - Máximo: R$ 250.000.000 (Fazenda em Cristalina-GO)
+# - Média estimada: R$ 15-30 milhões
+
+# Faixas de Área (observadas nas amostras):
+# - Mínimo: 250 m² (Rancho em Frutal-MG)
+# - Máximo: 7.986 hectares (Fazenda em Ibirarema-SP)
+# - Média estimada: 1.000-2.000 hectares
