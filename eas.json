@@ -1,0 +1,93 @@
+{
+  "cli": {
+    "version": ">= 16.13.3",
+    "appVersionSource": "remote",
+    "promptToConfigurePushNotifications": true
+  },
+  "build": {
+    "base": {
+      "node": "20.11.0",
+      "env": {
+        "NODE_ENV": "production",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "from_secrets"
+      }
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "simulator": true,
+        "buildConfiguration": "Debug"
+      },
+      "channel": "development",
+      "env": {
+        "NODE_ENV": "development",
+        "EXPO_PUBLIC_API_URL": "http://localhost:3000"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "ios": {
+        "simulator": false
+      },
+      "channel": "preview",
+      "env": {
+        "NODE_ENV": "staging",
+        "EXPO_PUBLIC_API_URL": "https://staging-api.lotego.com.br"
+      }
+    },
+    "production": {
+      "extends": "base",
+      "android": {
+        "buildType": "app-bundle",
+        "image": "latest"
+      },
+      "ios": {
+        "image": "latest",
+        "buildConfiguration": "Release"
+      },
+      "channel": "production",
+      "env": {
+        "NODE_ENV": "production",
+        "EXPO_PUBLIC_API_URL": "https://api.lotego.com.br"
+      },
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "./credentials/google-play-key.json",
+        "track": "production",
+        "releaseStatus": "completed",
+        "rollout": 1.0
+      },
+      "ios": {
+        "appleId": "contact@lotego.com.br",
+        "ascAppId": "your-app-store-connect-app-id",
+        "appleTeamId": "your-apple-team-id"
+      }
+    },
+    "preview": {
+      "android": {
+        "serviceAccountKeyPath": "./credentials/google-play-key.json",
+        "track": "internal",
+        "releaseStatus": "draft"
+      },
+      "ios": {
+        "appleId": "contact@lotego.com.br",
+        "ascAppId": "your-app-store-connect-app-id",
+        "appleTeamId": "your-apple-team-id"
+      }
+    }
+  }
+}

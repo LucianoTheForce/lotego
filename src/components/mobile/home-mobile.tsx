@@ -30,6 +30,16 @@ export default function HomeMobile() {
 
   const featuredProperties = [
     {
+      id: 'hermany-andrade',
+      title: 'Loteamento Hermany Andrade',
+      location: 'Brahman, MG',
+      price: 'A partir de R$ 42.000',
+      area: '50 lotes disponíveis',
+      image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&h=300&fit=crop',
+      rating: 4.9,
+      special: true
+    },
+    {
       id: 1,
       title: 'Terreno em Condomínio Fechado',
       location: 'Alphaville, SP',
@@ -141,14 +151,24 @@ export default function HomeMobile() {
         
         <div className="space-y-4">
           {featuredProperties.map((property) => (
-            <Link key={property.id} href={`/property-mobile/${property.id}`}>
-              <Card className="overflow-hidden border-gray-200 hover:shadow-lg transition-all">
+            <Link 
+              key={property.id} 
+              href={property.id === 'hermany-andrade' ? '/loteamento-hermany-andrade' : `/property-mobile/${property.id}`}
+            >
+              <Card className={`overflow-hidden border-gray-200 hover:shadow-lg transition-all ${
+                property.special ? 'ring-2 ring-green-500 ring-opacity-50' : ''
+              }`}>
                 <div className="relative h-48">
                   <img
                     src={property.image}
                     alt={property.title}
                     className="w-full h-full object-cover"
                   />
+                  {property.special && (
+                    <div className="absolute top-3 left-3 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      LANÇAMENTO
+                    </div>
+                  )}
                   <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
                     <Star className="h-4 w-4 text-yellow-500 fill-current" />
                     <span className="text-sm font-semibold">{property.rating}</span>
@@ -166,7 +186,7 @@ export default function HomeMobile() {
                       <p className="text-sm text-gray-600">{property.area}</p>
                     </div>
                     <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
-                      Ver Detalhes
+                      {property.special ? 'Ver Loteamento' : 'Ver Detalhes'}
                     </Button>
                   </div>
                 </CardContent>
